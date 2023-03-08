@@ -8,7 +8,7 @@ export const NotConnectedPage = () => {
 
                 <Box marginTop="18%" marginBottom="18%">
                     <Center>
-                        <Heading>⚠️ You should to be connected ⚠️</Heading>
+                        <Heading>⚠️ You must be connected ⚠️</Heading>
                     </Center>
                 </Box>
 
