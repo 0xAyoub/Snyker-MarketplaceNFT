@@ -64,9 +64,9 @@ contract Snyker is ERC721URIStorage {
         emit listPriceUpdated(_priceMarket);
     }
 
-    function getListPrice() public view returns (uint256) {
-        return priceMarket;
-    }
+    // function getListPrice() public view returns (uint256) {
+    //     return priceMarket;
+    // }
 
     function getLatestIdToListedToken() public view returns (Sneaker memory) {
         uint256 currentTokenId = _tokenIds.current();

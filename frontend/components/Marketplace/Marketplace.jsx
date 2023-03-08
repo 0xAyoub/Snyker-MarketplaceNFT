@@ -44,7 +44,7 @@ export const Marketplace = () => {
         const ethers = require("ethers");
 
         const provider = new ethers.providers.Web3Provider(window.ethereum)
-        const signer = provider.getSigner();
+        const signer = provider.getSigner()
 
         let contract = new ethers.Contract(contractAddress, Contract.abi, signer)
 
