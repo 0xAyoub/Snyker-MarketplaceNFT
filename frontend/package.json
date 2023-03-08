@@ -1,0 +1,28 @@
+{
+  "name": "frontend-npm",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^2.5.1",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@next/font": "13.1.6",
+    "@rainbow-me/rainbowkit": "^0.10.0",
+    "dotenv": "^16.0.3",
+    "form-data": "^4.0.0",
+    "framer-motion": "^9.1.7",
+    "next": "13.1.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "wagmi": "^0.10.15"
+  },
+  "devDependencies": {
+    "ethers": "^5.7.2"
+  }
+}
