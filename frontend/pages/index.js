@@ -4,10 +4,15 @@ import styles from '@/styles/Home.module.css'
 
 import { Header } from '../components/Header/Header'
 import { HomePage } from '../components/Home/Home'
+import { NotConnectedPage } from '../components/NotConnected/NotConnected'
 import { Footer } from '../components/Footer/Footer'
+import { useAccount, useProvider, useSigner, useBalance  } from 'wagmi'
 
 
 export default function Home() {
+
+  const isConnected = useAccount().isConnected
+
   return (
     <>
 
@@ -18,7 +23,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header/>
-      <HomePage/>
+      {
+        isConnected ? (
+          <HomePage/>
+        ) : (
+          <NotConnectedPage/>
+        )
+      }
       <Footer/>
     </>
 

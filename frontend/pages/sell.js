@@ -2,8 +2,14 @@ import Head from 'next/head'
 import { Header } from "@/components/Header/Header"
 import { Sell } from "@/components/Sell/Sell" 
 import { Footer } from '../components/Footer/Footer'
+import { NotConnectedPage } from '../components/NotConnected/NotConnected'
+import { useAccount, useProvider, useSigner, useBalance  } from 'wagmi'
 
 export default function SellPage() {
+
+  const isConnected = useAccount().isConnected
+
+
   return (
     <>
       <Head>
@@ -13,7 +19,13 @@ export default function SellPage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
     <Header/>
-    <Sell/>
+    {
+        isConnected ? (
+          <Sell/>
+        ) : (
+          <NotConnectedPage/>
+        )
+    }
     <Footer/>
     </>
   )

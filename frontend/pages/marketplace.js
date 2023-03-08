@@ -2,8 +2,15 @@ import Head from 'next/head'
 import { Header } from "@/components/Header/Header"
 import { Marketplace } from "@/components/Marketplace/Marketplace"
 import { Footer } from '../components/Footer/Footer'
+import { NotConnectedPage } from '../components/NotConnected/NotConnected'
+import { useAccount, useProvider, useSigner, useBalance  } from 'wagmi'
+
+
 
 export default function MarketplacePage() {
+
+  const isConnected = useAccount().isConnected
+
   return (
     <>
       <Head>
@@ -13,7 +20,13 @@ export default function MarketplacePage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
     <Header/>
-    <Marketplace/>
+    {
+        isConnected ? (
+          <Marketplace/>
+        ) : (
+          <NotConnectedPage/>
+        )
+    }
     <Footer/>
     </>
   )

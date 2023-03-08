@@ -2,9 +2,15 @@ import Head from 'next/head'
 import { Header } from "@/components/Header/Header"
 import { Release } from "@/components/Release/Release"
 import { Footer } from '../components/Footer/Footer'
+import { NotConnectedPage } from '../components/NotConnected/NotConnected'
+import { useAccount, useProvider, useSigner, useBalance  } from 'wagmi'
 
 
 export default function ReleasePage() {
+
+  const isConnected = useAccount().isConnected
+
+
   return (
     <>
       <Head>
@@ -14,7 +20,13 @@ export default function ReleasePage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
     <Header/>
-    <Release/>
+      {
+        isConnected ? (
+          <Release/>
+        ) : (
+          <NotConnectedPage/>
+        )
+      }
     <Footer/>
     </>
   )
