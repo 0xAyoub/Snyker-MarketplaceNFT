@@ -1,4 +1,8 @@
-Une marketplace d'achat / vente et revente de sneakers décentralisée.
+<h2>FRONT-END</h2>
 
-DApp : https://snyker-marketplace.vercel.app/ <br>
-Smart-contract : https://goerli.etherscan.io/address/0xF628D82373fE7C2f47109003EAFA90F29CE235b1#code
+- Javascript
+- NextJS
+- ReactJS
+- Ethers.js (communication avec le smart-contract)
+- Wagmi/RainbowKit (ConnectButton)
+- ChakraUI
