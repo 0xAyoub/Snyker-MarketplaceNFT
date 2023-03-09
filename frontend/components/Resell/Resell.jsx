@@ -50,12 +50,15 @@ export const Resell = () => {
         let transaction = await contract.getAllNFTs()
         let transactionInSale = []
 
-        for(var i = 0; i < transaction.length; i++){
 
-            if(transaction[i].tokenId.toString() != 0){
-                transactionInSale.push(transaction[i])
+            for(var i = 0; i < transaction.length; i++){
+                if(transaction[i].tokenId.toString() != 0){
+                    if(!transaction[i].firstSale){
+                        transactionInSale.push(transaction[i])
+                    }
+                }
             }
-        }
+
     
 
         const items = await Promise.all(transactionInSale.map(async i => {
@@ -99,7 +102,7 @@ export const Resell = () => {
         <>
             <Flex display="block" marginLeft="30px" marginRight="30px" marginBottom="30px">
 
-                    <Heading marginTop="50px" marginLeft="15px">Release</Heading>
+                    <Heading marginTop="50px" marginLeft="15px">Resell</Heading>
                     
                     <Grid templateColumns='repeat(4, 1fr)' gap={10}>
                     { 

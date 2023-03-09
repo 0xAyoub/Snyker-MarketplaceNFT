@@ -8,7 +8,7 @@ import { Sneaker } from "../Sneaker/Sneaker"
 import axios from "axios";
 
 
-export const Marketplace = () => {
+export const Release = () => {
 
     const dataDefault = [
         {
@@ -54,7 +54,9 @@ export const Marketplace = () => {
         for(var i = 0; i < transaction.length; i++){
 
             if(transaction[i].tokenId.toString() != 0){
-                transactionInSale.push(transaction[i])
+                if(transaction[i].firstSale){
+                    transactionInSale.push(transaction[i])
+                }
             }
         }
     
@@ -99,7 +101,7 @@ console.log(data)
         <>
             <Flex display="block" marginLeft="30px" marginRight="30px" marginBottom="30px">
 
-                    <Heading marginTop="50px" marginLeft="15px">Marketplace</Heading>
+                    <Heading marginTop="50px" marginLeft="15px">Release</Heading>
                     
                     <Grid templateColumns='repeat(4, 1fr)' gap={10}>
                     { 
