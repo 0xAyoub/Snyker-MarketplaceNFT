@@ -72,7 +72,7 @@ export const Sneaker = (data) => {
                     <Center display="block" marginBottom="20px">
                         <Text fontWeight="600" fontSize="20px">{data.data.tokenId}</Text>
                         <Text fontWeight="600" fontSize="20px">{data.data.name}</Text>
-                        <Image src={data.data.image}></Image>
+                        <Image src={data.data.image} htmlHeight='200px' htmlWidth="200px"></Image>
                     </Center>
 
                     <Box marginTop="10px">
