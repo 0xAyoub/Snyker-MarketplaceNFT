@@ -7,7 +7,7 @@ import { Sneaker } from "../Sneaker/Sneaker"
 import axios from "axios";
 
 
-export const Release = () => {
+export const Resell = () => {
 
     const dataDefault = [
         {

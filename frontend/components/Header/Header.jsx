@@ -8,7 +8,7 @@ export const Header = () => {
             <a href="/"> <Heading>Snyker</Heading> </a>
             {/*<a href="/release"><Text margin="13px" marginLeft="60px" fontSize="17px">Release</Text></a>*/}
             <a href="/marketplace"><Text margin="13px" marginLeft="60px" fontSize="17px">Marketplace</Text></a>
-            <a href="/release"><Text margin="13px" marginLeft="20px" fontSize="17px">Release</Text></a>
+            <a href="/resell"><Text margin="13px" marginLeft="20px" fontSize="17px">Resell</Text></a>
             <a href="/wallet"><Text margin="13px" marginLeft="20px" fontSize="17px">Wallet</Text></a>
             </Flex>
 

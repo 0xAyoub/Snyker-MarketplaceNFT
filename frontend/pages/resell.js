@@ -1,12 +1,12 @@
 import Head from 'next/head'
 import { Header } from "@/components/Header/Header"
-import { Release } from "@/components/Release/Release"
+import { Resell } from "@/components/Resell/Resell"
 import { Footer } from '../components/Footer/Footer'
 import { NotConnectedPage } from '../components/NotConnected/NotConnected'
 import { useAccount, useProvider, useSigner, useBalance  } from 'wagmi'
 
 
-export default function ReleasePage() {
+export default function ResellPage() {
 
   const isConnected = useAccount().isConnected
 
@@ -22,7 +22,7 @@ export default function ReleasePage() {
     <Header/>
       {
         isConnected ? (
-          <Release/>
+          <Resell/>
         ) : (
           <NotConnectedPage/>
         )
