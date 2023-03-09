@@ -77,6 +77,7 @@ export const Sneaker = (data) => {
 
                     </Center>
 
+
                     <Box marginTop="10px">
                         <Text fontWeight="500" fontSize="15px" >Prix : {data.data.price} ETH</Text>
                         <Button colorScheme="blue" marginTop="10px" 
