@@ -70,13 +70,15 @@ export const Sneaker = (data) => {
                 <Box justifyContent="space-between" borderWidth="2px" borderRadius="50px" marginTop="30px"  height="93%" padding="30px" width="20vw">
                                         
                     <Center display="block" marginBottom="20px">
-                        <Text fontWeight="600" fontSize="20px">{data.data.tokenId}</Text>
-                        <Text fontWeight="600" fontSize="20px">{data.data.name}</Text>
+                        {/* <Text fontWeight="600" fontSize="20px">{data.data.tokenId}</Text> */}
+                        <Text fontWeight="700" fontSize="20px">{data.data.name}</Text>
                         <Image src={data.data.image} htmlHeight='200px' htmlWidth="200px"></Image>
+                        <Text marginTop="20px" fontWeight="500" fontSize="17px">Description :</Text><Text fontWeight="400" fontSize="14px">{data.data.description}</Text>
+
                     </Center>
 
                     <Box marginTop="10px">
-                        <Text fontWeight="500" fontSize="15px" >{data.data.price} ETH</Text>
+                        <Text fontWeight="500" fontSize="15px" >Prix : {data.data.price} ETH</Text>
                         <Button colorScheme="blue" marginTop="10px" 
                             onClick={() => {
                                 if (!data.data.firstSale) {
