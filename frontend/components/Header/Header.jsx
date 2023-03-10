@@ -14,7 +14,7 @@ export const Header = () => {
 
             <Flex margin="20px" justifyContent="space-between" >
 
-                <a href="/sell"><Button colorScheme="purple" padding="6" marginRight="18px">
+                <a href="/sell"><Button colorScheme="purple" padding="6" marginRight="15px">
                 Sell a sneaker
                 </Button></a>
                 <ConnectButton/>
