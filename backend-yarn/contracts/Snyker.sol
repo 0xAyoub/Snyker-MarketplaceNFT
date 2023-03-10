@@ -187,7 +187,7 @@ contract Snyker is ERC721URIStorage {
         idOfSneaker[tokenId].isInSale = false;
         idOfSneaker[tokenId].firstSale = false;
 
-        emit releaseExecuted(msg.sender, tokenId, true, false);
+        emit releaseExecuted(msg.sender, tokenId, false, false);
 
     }
     
@@ -200,7 +200,6 @@ contract Snyker is ERC721URIStorage {
         idOfSneaker[tokenId].isInSale = true;
         idOfSneaker[tokenId].firstSale = false;
         idOfSneaker[tokenId].price = price * 10 ** 18;
-
 
         payable(admin).transfer(priceMarket);
 

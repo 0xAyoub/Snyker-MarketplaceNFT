@@ -10,7 +10,7 @@ import axios from "axios";
 export const Sneaker = (data) => {
 
 
-   
+   console.log(data)
     const [message, updateMessage] = useState('');
     const contractAddress = process.env.NEXT_PUBLIC_SCADDRESS
     const lastBlock = process.env.NEXT_PUBLIC_BLOCK
@@ -62,17 +62,17 @@ export const Sneaker = (data) => {
             const contract = new ethers.Contract(contractAddress, Contract.abi, signer)
             console.log(data.data.tokenId)
 
-            // let price = data.data.price
-            // price = ethers.utils.parseEther(price)
-            // price = price.toString()
-            // let tx = await contract.executeSale(data.data.tokenId, {value: price})
-            // await tx.wait()
-
             let price = data.data.price
-            let priceInWei = ethers.utils.parseEther(price)
-            priceInWei = priceInWei.toString()
-            let tx = await contract.executeSale(data.data.tokenId, {value: priceInWei})
+            price = ethers.utils.parseEther(price)
+            price = price.toString()
+            let tx = await contract.executeSale(data.data.tokenId, {value: price})
             await tx.wait()
+
+            // let price = data.data.price
+            // let priceInWei = ethers.utils.parseEther(price)
+            // priceInWei = priceInWei.toString()
+            // let tx = await contract.executeSale(data.data.tokenId, {value: priceInWei})
+            // await tx.wait()
 
     
         } catch (e) {
@@ -84,7 +84,8 @@ export const Sneaker = (data) => {
     return (
 
         <>
-
+                        {/* {console.log(data.data.firstSale)} */}
+            
                 <Box justifyContent="space-between" borderWidth="2px" borderRadius="50px" marginTop="30px"  height="93%" padding="30px" width="20vw">
                                         
                     <Center display="block" marginBottom="20px">
@@ -98,15 +99,37 @@ export const Sneaker = (data) => {
 
                     <Box marginTop="10px">
                         <Text fontWeight="500" fontSize="15px" >Prix : {data.data.price} ETH</Text>
-                        <Button colorScheme="blue" marginTop="10px" 
-                            onClick={() => {
-                                if (!data.data.firstSale) {
-                                    executeRelease();
-                                } else {
-                                    executeSale();
-                                }
-                            }}
-                        >
+
+                        {/* {
+
+                            data.data.firstSale === true ? (
+
+                                <Button colorScheme="blue" marginTop="10px" onClick={() => {console.log("executeRelease"); executeRelease()}}>
+                                    Acheter
+                                    </Button>
+                            ) : (
+
+                                <Button colorScheme="blue" marginTop="10px" onClick={() => {console.log("executeSale"); executeSale()}}>
+                                    Acheter
+                                    </Button>
+
+                            )
+
+                        } */}
+
+                        <Button colorScheme="blue" marginTop="10px" onClick={() => {
+
+                            
+                        if (data.data.firstSale === "true") {
+                            console.log("firstSale");
+                            executeRelease();
+                        } if(data.data.firstSale === "false") {
+                            console.log("not a FirstSale");
+                            executeSale();
+                        } else {
+                            console.log(data.data.firstSale)
+                        }
+                    }}>
                             Acheter
                         </Button>
                     </Box>
