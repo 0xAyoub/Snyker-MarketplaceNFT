@@ -127,10 +127,10 @@ export const Resell = () => {
             ) : (
             <Flex display="block" marginLeft="30px" marginRight="30px" marginBottom="35vh" marginTop="35vh">
                 <Flex flexDirection="column" alignItems="center">
-                    <Heading marginLeft="15px">Release</Heading>
+                    <Heading marginLeft="15px">Resell</Heading>
                     <Text fontWeight="500" fontSize="20px">⚠️ Il n'y a aucune paire de sneakers en resell, vendez-en une. ⚠️</Text>
                     <Box>
-                        <a href="/sell"><Button marginTop="10px" colorScheme="facebook">Vendre une paire</Button></a>
+                        <a href="/sell"><Button marginTop="10px" colorScheme="purple">Vendre une paire</Button></a>
                     </Box>
                 </Flex>
             </Flex>
