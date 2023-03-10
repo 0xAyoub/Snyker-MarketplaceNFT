@@ -98,8 +98,8 @@ export const Wallet = () => {
                 <Flex flexDirection="column" alignItems="center">
                     <Heading marginLeft="15px">Wallet</Heading>
                     <Text fontWeight="500" fontSize="20px">⚠️ Vous n'avez aucune paire de sneakers, achetez-en ! ⚠️</Text>
-                    <Box>
-                        <a href="/release"><Button marginRight="10px" colorScheme="facebook">Minter une paire</Button></a>
+                    <Box marginTop="15px">
+                        <a href="/release"><Button marginRight="10px"  colorScheme="facebook">Minter une paire</Button></a>
                         <a href="/resell"><Button  marginLeft="10px" colorScheme="blue">Acheter une paire</Button></a>
                     </Box>
                 </Flex>
