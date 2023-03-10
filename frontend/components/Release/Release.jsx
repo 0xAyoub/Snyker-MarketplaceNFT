@@ -7,7 +7,7 @@ import { Sneaker } from "../Sneaker/Sneaker"
 import axios from "axios";
 
 
-export const Resell = () => {
+export const Release = () => {
 
     const dataDefault = [
         {
@@ -102,7 +102,7 @@ export const Resell = () => {
         <>
             <Flex display="block" marginLeft="30px" marginRight="30px" marginBottom="30px">
 
-                    <Heading marginTop="50px" marginLeft="15px">Resell</Heading>
+                    <Heading marginTop="50px" marginLeft="15px">Release</Heading>
                     
                     <Grid templateColumns='repeat(4, 1fr)' gap={10}>
                     { 
