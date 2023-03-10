@@ -66,7 +66,9 @@ export const Wallet = () => {
 
     return (
         <>
-            <Flex display="block" marginLeft="30px" marginRight="30px" marginBottom="30px">
+        {
+            data.length !== 0 ? (
+                <Flex display="block" marginLeft="30px" marginRight="30px" marginBottom="15vh" marginTop="5vh">
                 <Flex justifyContent="space-between">
                     <Heading marginTop="65px" marginLeft="15px">Wallet</Heading>
                   
@@ -76,21 +78,36 @@ export const Wallet = () => {
 
                             <Grid templateColumns='repeat(4, 1fr)' gap={10}>
                                 { 
-                                   
-                                    data.map((value, index) => {
-                                        return (
+
+                                        data.map((value, index) => {
+                                            return (
+                                                
+                                                <SneakerWallet data={value} key={index}></SneakerWallet>
                                             
-                                            <SneakerWallet data={value} key={index}></SneakerWallet>
-                                        
-                                        )
-                                    })
-                                
+                                            )
+                                        })
+
                                 }
                                 
                             </Grid>
 
                     </Flex>
             </Flex>
+            ) : (
+            <Flex display="block" marginLeft="30px" marginRight="30px" marginBottom="35vh" marginTop="35vh">
+                <Flex flexDirection="column" alignItems="center">
+                    <Heading marginLeft="15px">Wallet</Heading>
+                    <Text fontWeight="500" fontSize="20px">⚠️ Vous n'avez aucune paire de sneakers, achetez-en ! ⚠️</Text>
+                    <Box>
+                        <a href="/release"><Button marginRight="10px" colorScheme="facebook">Minter une paire</Button></a>
+                        <a href="/resell"><Button  marginLeft="10px" colorScheme="blue">Acheter une paire</Button></a>
+                    </Box>
+                </Flex>
+            </Flex>
+            )
+
+        }
+           
         </>
     )
 }

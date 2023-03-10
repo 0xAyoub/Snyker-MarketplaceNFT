@@ -12,12 +12,10 @@ export const Header = () => {
             <a href="/wallet"><Text margin="13px" marginLeft="20px" fontSize="17px">Wallet</Text></a>
             </Flex>
 
-            <Flex margin="20px">
-                <a href="/Release"><Button colorScheme="blue" padding="20px" marginRight="10px" margin="5px">
-                Buy
-                </Button></a>
-                <a href="/sell"><Button colorScheme="facebook"  marginRight="10px" margin="5px">
-                Sell
+            <Flex margin="20px" justifyContent="space-between" >
+
+                <a href="/sell"><Button colorScheme="purple" padding="6" marginRight="18px">
+                Sell a sneaker
                 </Button></a>
                 <ConnectButton/>
 

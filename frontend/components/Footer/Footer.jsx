@@ -1,4 +1,4 @@
-import { Flex, Heading, Text, Button, Divider } from '@chakra-ui/react'
+import { Flex, Heading, Container, Text, Button, Divider } from '@chakra-ui/react'
 import { useAccount, useProvider, useSigner, useBalance  } from 'wagmi'
 import { useState, useEffect } from 'react'
 import { uploadFileToIPFS, uploadJSONToIPFS } from "../../src/pinata";
@@ -26,11 +26,11 @@ export const Footer = () => {
 
 
     return(
-        <Flex padding="20px" paddingRight="60px" paddingLeft="60px" justifyContent="space-between" bg="black" color="white">
+        <Flex display="flex" as="footer" padding="20px" margin="0" width="100%" paddingRight="60px" paddingLeft="60px" justifyContent="space-between" bg="black" color="white">
 
-            <Text margin="13px" fontSize="13px">Copyright 2023 - Ayoub Benouda</Text>
+            <Text marginTop="13px" marginBottom="13px" fontSize="13px">Copyright 2023 - Ayoub Benouda</Text>
 
-                    <a href="/"> <Button colorScheme="red" onClick={withdrawAll} >Admin Withdraw</Button> </a>
+            <a href="/"> <Button colorScheme="red" onClick={withdrawAll} >Admin Withdraw</Button> </a>
      
          </Flex>
     )

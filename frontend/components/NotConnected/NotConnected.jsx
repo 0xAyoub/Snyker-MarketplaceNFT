@@ -6,7 +6,7 @@ export const NotConnectedPage = () => {
     return (
         <>
 
-                <Box marginTop="18%" marginBottom="18%">
+                <Box marginTop="35vh" marginBottom="35vh">
                     <Center>
                         <Heading>⚠️ You must be connected ⚠️</Heading>
                     </Center>

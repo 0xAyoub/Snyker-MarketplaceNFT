@@ -72,7 +72,7 @@ export const Sneaker = (data) => {
             priceInWei = priceInWei.toString()
             let tx = await contract.executeSale(data.data.tokenId, {value: priceInWei})
             await tx.wait()
-            
+
             toast({
                 title: 'Achat réussi',
                 description: "Vous l'avez acheté à : " + price + " ETH",

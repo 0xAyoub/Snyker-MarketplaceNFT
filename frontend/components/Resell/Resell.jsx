@@ -1,4 +1,4 @@
-import { Flex, Heading, Grid } from '@chakra-ui/react'
+import { Flex, Text, Heading, Grid, Box, Button } from '@chakra-ui/react'
 import { useAccount, useProvider, useSigner, useBalance  } from 'wagmi'
 import { useState, useEffect } from 'react'
 import { uploadFileToIPFS, uploadJSONToIPFS } from "../../src/pinata";
@@ -100,34 +100,42 @@ export const Resell = () => {
 
     return (
         <>
-            <Flex display="block" marginLeft="30px" marginRight="30px" marginBottom="30px">
+        {
+            data.length != 0 ? (
+                <Flex display="block" marginLeft="30px" marginRight="30px" marginBottom="5em" marginTop="5em">
 
-                    <Heading marginTop="50px" marginLeft="15px">Resell</Heading>
-                    
-                    <Grid templateColumns='repeat(4, 1fr)' gap={10}>
-                    { 
-                        data? (
-                            
+                        <Heading marginTop="50px" marginLeft="15px">Resell</Heading>
+                        
+                        <Grid templateColumns='repeat(4, 1fr)' gap={10}>
+                        { 
+
+                                
                                 data.map((value, index) => {
                                     return(
                                         <Sneaker data={value} key={index}></Sneaker>
-                                    ) 
-                                })
-                        ) : (
-                            dataDefault.map((value, index) => {
-                                return (
-                                    <Sneaker data={value} key={index}></Sneaker>
-                                )
-                            })
-                        )
-                    }
+                                        ) 
+                                    })
 
-                            {/* {data.map((value, index) => {
-                                return <Sneaker data={value} key={index}></Sneaker>;
-                            })} */}
+                                }
 
-                    </Grid>
+                                {/* {data.map((value, index) => {
+                                    return <Sneaker data={value} key={index}></Sneaker>;
+                                })} */}
+
+                        </Grid>
+                </Flex>
+            ) : (
+            <Flex display="block" marginLeft="30px" marginRight="30px" marginBottom="35vh" marginTop="35vh">
+                <Flex flexDirection="column" alignItems="center">
+                    <Heading marginLeft="15px">Release</Heading>
+                    <Text fontWeight="500" fontSize="20px">⚠️ Il n'y a aucune paire de sneakers en resell, vendez-en une. ⚠️</Text>
+                    <Box>
+                        <a href="/sell"><Button marginTop="10px" colorScheme="facebook">Vendre une paire</Button></a>
+                    </Box>
+                </Flex>
             </Flex>
+            )
+        }
         </>
     )
 }

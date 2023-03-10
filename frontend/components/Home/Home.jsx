@@ -12,10 +12,10 @@ export const HomePage = () => {
                         <Text  textAlign="center" fontSize="50px" fontWeight="700" >The 1st marketplace without theft, and scams.</Text>
                     </Center>
                     <Flex justify="center">
-                        <a href="/marketplace"><Button colorScheme="blue" marginRight="7px" padding="30px">
+                        <a href="/release"><Button colorScheme="blue" marginRight="7px" padding="30px">
                         <Text fontWeight="600" fontSize="17px">Buy a sneaker</Text>
                         </Button></a>
-                        <a href="/sell"><Button colorScheme="facebook" marginLeft="7px" padding="30px">
+                        <a href="/sell"><Button colorScheme="purple" marginLeft="7px" padding="30px">
                         <Text fontWeight="600" fontSize="17px">Sell a sneaker</Text>
                         </Button></a>
                     </Flex>
