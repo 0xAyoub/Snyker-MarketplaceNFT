@@ -22,7 +22,6 @@ export const Sell = () => {
         var file = e.target.files[0];
 
         try {
-
             const response = await uploadFileToIPFS(file);
             if(response.success === true) {
                 console.log("Uploaded image to Pinata: ", response.pinataURL)
@@ -87,13 +86,24 @@ export const Sell = () => {
             console.log(metadataURL)
 
             let tx = await contract.createToken(metadataURL, name, description, price, {value: priceMarket})
+            toast({
+                title: "La vente s'effectue, veuillez patienter",
+                status: 'info',
+                duration: 100000,
+                isClosable: false,
+            })
             await tx.wait()
-             
-            console.log(await contract.tokenURI(tx.tokenId))
-            alert("Successfully listed your NFT!");
+            toast({
+                title: "En vente ! Vous pouvez accéder à votre paire dans l'onglet Release",
+                status: 'success',
+                duration: 9000,
+                isClosable: true,
+            })
+
+
             updateMessage("");
             updateFormParams({ name: '', description: '', price: ''});
-            window.location.replace("/")
+            // window.location.replace("/release")
         }
         catch(e) {
             console.log( "Upload error"+e )

@@ -27,14 +27,27 @@ export const Sneaker = (data) => {
             const contract = new ethers.Contract(contractAddress, Contract.abi, signer)
 
             let price = data.data.price
-            price = ethers.utils.parseEther(price)
-            price = price.toString()
-            let tx = await contract.executeRelease(data.data.tokenId, {value: price})
+            let priceInWei = ethers.utils.parseEther(price)
+            priceInWei = priceInWei.toString()
+            let tx = await contract.executeRelease(data.data.tokenId, {value: priceInWei})
             await tx.wait()
 
-    
+            toast({
+                title: 'Achat réussi',
+                description: "Vous l'avez acheté à : " + price + " ETH",
+                status: 'success',
+                duration: 9000,
+                isClosable: true,
+            })
+ 
         } catch (e) {
-            console.log(e)
+            toast({
+                title: "Achat échoué",
+                description: e.message,
+                status: 'error',
+                duration: 9000,
+                isClosable: true,
+            })
         }
 
     }
@@ -49,10 +62,16 @@ export const Sneaker = (data) => {
             const contract = new ethers.Contract(contractAddress, Contract.abi, signer)
             console.log(data.data.tokenId)
 
+            // let price = data.data.price
+            // price = ethers.utils.parseEther(price)
+            // price = price.toString()
+            // let tx = await contract.executeSale(data.data.tokenId, {value: price})
+            // await tx.wait()
+
             let price = data.data.price
-            price = ethers.utils.parseEther(price)
-            price = price.toString()
-            let tx = await contract.executeSale(data.data.tokenId, {value: price})
+            let priceInWei = ethers.utils.parseEther(price)
+            priceInWei = priceInWei.toString()
+            let tx = await contract.executeSale(data.data.tokenId, {value: priceInWei})
             await tx.wait()
 
     
@@ -63,7 +82,6 @@ export const Sneaker = (data) => {
     }
 
     return (
-
 
         <>
 

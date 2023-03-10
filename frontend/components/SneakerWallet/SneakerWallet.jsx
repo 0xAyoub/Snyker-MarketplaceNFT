@@ -1,21 +1,13 @@
-import { Flex, Input, Box, Text, Button, Image, Center } from "@chakra-ui/react"
-import { useAccount, useProvider, useSigner, useBalance  } from 'wagmi'
-import { useState, useEffect } from 'react'
-import { uploadFileToIPFS, uploadJSONToIPFS } from "../../src/pinata";
+import { Flex, Input, Box, Text, Button, Image, Center, useToast } from "@chakra-ui/react"
+import { useState } from 'react'
 import Contract from "../../src/Snyker.json";
-import axios from "axios";
-
-
 
 export const SneakerWallet = (data) => {
-    const newTo = {
-        pathname:"/"+data.data.tokenId
-    }
-   
+
     const contractAddress = process.env.NEXT_PUBLIC_SCADDRESS
-    const lastBlock = process.env.NEXT_PUBLIC_BLOCK
 
     const [price, setPrice] = useState('');
+    const toast = useToast()
 
     const sellSneaker = async() => {
         try {
@@ -31,10 +23,24 @@ export const SneakerWallet = (data) => {
 
             let tx = await contract.sellSneaker(data.data.tokenId, priceInEther, {value: priceMarket})
             await tx.wait()
+            toast({
+                title: 'Vente réussie',
+                description: "Vous avez vendu votre paire de sneakers à " + priceInEther + " ETH",
+                status: 'success',
+                duration: 9000,
+                isClosable: true,
+            })
 
     
         } catch (e) {
             console.log(e)
+            toast({
+                title: 'Vente échoué',
+                description: e.message,
+                status: 'error',
+                duration: 9000,
+                isClosable: true,
+            })
         }
 
     }

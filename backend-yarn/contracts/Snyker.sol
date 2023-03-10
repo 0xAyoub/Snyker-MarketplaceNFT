@@ -50,8 +50,6 @@ contract Snyker is ERC721URIStorage {
     event saleExecuted(address owner, uint price, uint tokenId, bool isInSale, bool firstSale);
 
 
-
-
     mapping(uint256 => Sneaker) private idOfSneaker;
 
     constructor() ERC721("Snyker", "STK") {
@@ -64,9 +62,9 @@ contract Snyker is ERC721URIStorage {
         emit listPriceUpdated(_priceMarket);
     }
 
-    // function getListPrice() public view returns (uint256) {
-    //     return priceMarket;
-    // }
+    function getListPrice() public view returns (uint256) {
+        return priceMarket;
+    }
 
     function getLatestIdToListedToken() public view returns (Sneaker memory) {
         uint256 currentTokenId = _tokenIds.current();
