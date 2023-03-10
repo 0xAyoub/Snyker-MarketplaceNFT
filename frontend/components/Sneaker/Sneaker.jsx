@@ -1,4 +1,4 @@
-import { Flex, Box, Text, Button, Image, Center } from "@chakra-ui/react"
+import { Flex, Box, Text, Button, Image, Center, useToast } from "@chakra-ui/react"
 import { useAccount, useProvider, useSigner, useBalance  } from 'wagmi'
 import { useState, useEffect } from 'react'
 import { uploadFileToIPFS, uploadJSONToIPFS } from "../../src/pinata";
@@ -14,8 +14,7 @@ export const Sneaker = (data) => {
     const [message, updateMessage] = useState('');
     const contractAddress = process.env.NEXT_PUBLIC_SCADDRESS
     const lastBlock = process.env.NEXT_PUBLIC_BLOCK
-
-
+    const toast = useToast()
 
     const executeRelease = async() => {
         try {
@@ -62,21 +61,35 @@ export const Sneaker = (data) => {
             const contract = new ethers.Contract(contractAddress, Contract.abi, signer)
             console.log(data.data.tokenId)
 
-            let price = data.data.price
-            price = ethers.utils.parseEther(price)
-            price = price.toString()
-            let tx = await contract.executeSale(data.data.tokenId, {value: price})
-            await tx.wait()
-
             // let price = data.data.price
-            // let priceInWei = ethers.utils.parseEther(price)
-            // priceInWei = priceInWei.toString()
-            // let tx = await contract.executeSale(data.data.tokenId, {value: priceInWei})
+            // price = ethers.utils.parseEther(price)
+            // price = price.toString()
+            // let tx = await contract.executeSale(data.data.tokenId, {value: price})
             // await tx.wait()
 
+            let price = data.data.price
+            let priceInWei = ethers.utils.parseEther(price)
+            priceInWei = priceInWei.toString()
+            let tx = await contract.executeSale(data.data.tokenId, {value: priceInWei})
+            await tx.wait()
+            
+            toast({
+                title: 'Achat réussi',
+                description: "Vous l'avez acheté à : " + price + " ETH",
+                status: 'success',
+                duration: 9000,
+                isClosable: true,
+            })
     
         } catch (e) {
             console.log(e)
+            toast({
+                title: "Achat échoué",
+                description: e.message,
+                status: 'error',
+                duration: 9000,
+                isClosable: true,
+            })
         }
 
     }
@@ -118,18 +131,16 @@ export const Sneaker = (data) => {
                         } */}
 
                         <Button colorScheme="blue" marginTop="10px" onClick={() => {
-
-                            
-                        if (data.data.firstSale === "true") {
-                            console.log("firstSale");
-                            executeRelease();
-                        } if(data.data.firstSale === "false") {
-                            console.log("not a FirstSale");
-                            executeSale();
-                        } else {
-                            console.log(data.data.firstSale)
-                        }
-                    }}>
+                            if (data.data.firstSale === "true") {
+                                console.log("firstSale");
+                                executeRelease();
+                            } if(data.data.firstSale === "false") {
+                                console.log("not a FirstSale");
+                                executeSale();
+                            } else {
+                                console.log(data.data.firstSale)
+                            }
+                        }}>
                             Acheter
                         </Button>
                     </Box>

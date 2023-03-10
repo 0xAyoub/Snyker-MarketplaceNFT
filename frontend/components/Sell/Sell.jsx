@@ -1,4 +1,4 @@
-import { Flex, Textarea, Text, Box, Heading, Center, Input, Divider, Button, Grid, list } from '@chakra-ui/react'
+import { Flex, Textarea, Text, Box, Heading, Center, Input, Button, useToast } from '@chakra-ui/react'
 import { useAccount, useProvider, useSigner, useBalance  } from 'wagmi'
 import { useState, useEffect } from 'react'
 import { uploadFileToIPFS, uploadJSONToIPFS } from "../../src/pinata";
@@ -15,7 +15,7 @@ export const Sell = () => {
     const [fileURL, setFileURL] = useState(null);
     const [message, updateMessage] = useState('');
     const contractAddress = process.env.NEXT_PUBLIC_SCADDRESS
-
+    const toast = useToast()
 
 
     async function OnChangeFile(e) {

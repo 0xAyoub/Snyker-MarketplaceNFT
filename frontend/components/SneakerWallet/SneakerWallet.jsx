@@ -22,6 +22,12 @@ export const SneakerWallet = (data) => {
             const priceMarket = ethers.utils.parseUnits("100000000000000", 2);
 
             let tx = await contract.sellSneaker(data.data.tokenId, priceInEther, {value: priceMarket})
+            toast({
+                title: "La vente s'effectue, veuillez patienter",
+                status: 'info',
+                duration: 9000,
+                isClosable: false,
+            })
             await tx.wait()
             toast({
                 title: 'Vente réussie',

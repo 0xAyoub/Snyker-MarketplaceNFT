@@ -1,4 +1,4 @@
-import { Flex, Textarea, Text, Box, Heading, Center, Input, Divider, Button, Grid, CircularProgress, Image } from '@chakra-ui/react'
+import { Flex, Heading, Grid } from '@chakra-ui/react'
 import { useAccount, useProvider, useSigner, useBalance  } from 'wagmi'
 import { useState, useEffect } from 'react'
 import { uploadFileToIPFS, uploadJSONToIPFS } from "../../src/pinata";
