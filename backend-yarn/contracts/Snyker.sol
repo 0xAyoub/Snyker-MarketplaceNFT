@@ -237,4 +237,10 @@ contract Snyker is ERC721URIStorage {
         admin.transfer(address(this).balance);
     }
 
+    function deleteSneakers(uint tokenId) public {
+        require(msg.sender == admin, "You're not the admin");
+        _burn(tokenId);
+    
+    }
+
 }

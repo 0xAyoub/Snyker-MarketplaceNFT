@@ -128,6 +128,8 @@ export const Release = () => {
         </Flex>
             ) : (
             <Flex display="block" marginLeft="30px" marginRight="30px" marginBottom="35vh" marginTop="35vh">
+                {console.log("Salut")}
+
                 <Flex flexDirection="column" alignItems="center">
                     <Heading marginLeft="15px">Release</Heading>
                     <Text fontWeight="500" fontSize="20px">⚠️ Il n'y a aucune paire de sneakers en release, vendez-en une. ⚠️</Text>

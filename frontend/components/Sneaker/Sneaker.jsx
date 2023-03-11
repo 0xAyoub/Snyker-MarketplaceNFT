@@ -51,6 +51,22 @@ export const Sneaker = (data) => {
 
     }
 
+    const deleteSneakers = async() => {
+        try {
+            const ethers = require("ethers");
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            const signer = provider.getSigner();
+
+            const contract = new ethers.Contract(contractAddress, Contract.abi, signer)
+
+            let tx = await contract.deleteSneakers(data.data.tokenId)
+            await tx.wait()
+            
+        } catch(e) {
+            console.log(e.message)
+        }
+    }
+
     const executeSale = async() => {
         try {
          
@@ -97,7 +113,7 @@ export const Sneaker = (data) => {
     return (
 
         <>
-                        {/* {console.log(data.data.firstSale)} */}
+                        {console.log(data.data)}
             
                 <Box justifyContent="space-between" borderWidth="2px" borderRadius="50px" marginTop="30px"  height="93%" padding="30px" width="20vw">
                                         
@@ -143,6 +159,7 @@ export const Sneaker = (data) => {
                         }}>
                             Acheter
                         </Button>
+                        <Button colorScheme="red" marginTop="10px" marginLeft="10px" onClick={() => deleteSneakers()}>Delete</Button>
                     </Box>
 
                 </Box>
