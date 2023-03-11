@@ -37,7 +37,7 @@ export const Release = () => {
     const contractAddress = process.env.NEXT_PUBLIC_SCADDRESS
     const lastBlock = process.env.NEXT_PUBLIC_BLOCK
 
-
+  
 
     async function getAllNFTs() {
         const ethers = require("ethers");
@@ -102,44 +102,43 @@ export const Release = () => {
         <>
         {console.log(data)}
         {
-            data.length != 0 ? (
 
-                <Flex display="block" marginLeft="30px" marginRight="30px" marginBottom="5em" marginTop="5em">
-
-                <Heading marginTop="50px" marginLeft="15px">Release</Heading>
-                
-                <Grid templateColumns='repeat(4, 1fr)' gap={10}>
-                { 
-
-                        
-                            data.map((value, index) => {
-                                return(
-                                    <Sneaker data={value} key={index}></Sneaker>
-                                ) 
-                            })
-                
-                }
-
-                        {/* {data.map((value, index) => {
-                            return <Sneaker data={value} key={index}></Sneaker>;
-                        })} */}
-
-                </Grid>
-        </Flex>
-            ) : (
-            <Flex display="block" marginLeft="30px" marginRight="30px" marginBottom="35vh" marginTop="35vh">
-                {console.log("Salut")}
-
-                <Flex flexDirection="column" alignItems="center">
-                    <Heading marginLeft="15px">Release</Heading>
-                    <Text fontWeight="500" fontSize="20px">⚠️ Il n'y a aucune paire de sneakers en release, vendez-en une. ⚠️</Text>
-                    <Box>
-                        <a href="/sell"><Button marginTop="10px" padding="6" colorScheme="purple">Vendre une paire</Button></a>
-                    </Box>
-                </Flex>
+                data.length != 0 ? (
+    
+                    <Flex display="block" marginLeft="30px" marginRight="30px" marginBottom="5em" marginTop="5em">
+    
+                    <Heading marginTop="50px" marginLeft="15px">Release</Heading>
+                    
+                    <Grid templateColumns='repeat(4, 1fr)' gap={10}>
+                    { 
+                                data.map((value, index) => {
+                                    return(
+                                        <Sneaker data={value} key={index}></Sneaker>
+                                    ) 
+                                })
+                    }
+    
+                            {/* {data.map((value, index) => {
+                                return <Sneaker data={value} key={index}></Sneaker>;
+                            })} */}
+    
+                    </Grid>
             </Flex>
-            )
-
+        ) : (
+                <Flex display="block" marginLeft="30px" marginRight="30px" marginBottom="35vh" marginTop="35vh">
+                    {console.log("Salut")}
+    
+                    <Flex flexDirection="column" alignItems="center">
+                        <Heading marginLeft="15px">Release</Heading>
+                        <Text fontWeight="500" fontSize="20px">⚠️ Il n'y a aucune paire de sneakers en release, vendez-en une. ⚠️</Text>
+                        <Box>
+                            <a href="/sell"><Button marginTop="10px" padding="6" colorScheme="purple">Vendre une paire</Button></a>
+                        </Box>
+                    </Flex>
+                </Flex>
+        )
+            
+            
         }
         </>
     )
