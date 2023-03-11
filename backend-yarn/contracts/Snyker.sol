@@ -27,6 +27,7 @@ contract Snyker is ERC721URIStorage {
         uint price;
         bool firstSale;
         bool isInSale;
+        bool isDeleted;
     }
 
 
@@ -42,12 +43,13 @@ contract Snyker is ERC721URIStorage {
         address owner,
         uint price,
         bool firstSale,
-        bool isInSale
+        bool isInSale,
+        bool isDeleted
     );
 
-    event releaseExecuted(address owner, uint tokenId, bool isInSale, bool firstSale);
-    event sneakerSelled(uint price, uint tokenId, bool isInSale, bool firstSale);
-    event saleExecuted(address owner, uint price, uint tokenId, bool isInSale, bool firstSale);
+    event releaseExecuted(address owner, uint tokenId, bool isInSale, bool firstSale, bool isDeleted);
+    event sneakerSelled(uint price, uint tokenId, bool isInSale, bool firstSale, bool isDeleted);
+    event saleExecuted(address owner, uint price, uint tokenId, bool isInSale, bool firstSale, bool isDeleted);
 
 
     mapping(uint256 => Sneaker) private idOfSneaker;
@@ -64,6 +66,10 @@ contract Snyker is ERC721URIStorage {
 
     function getListPrice() public view returns (uint256) {
         return priceMarket;
+    }
+
+    function getDeletedSneakers(uint tokenId) public view returns (bool) {
+        return idOfSneaker[tokenId].isDeleted;
     }
 
     function getLatestIdToListedToken() public view returns (Sneaker memory) {
@@ -109,7 +115,8 @@ contract Snyker is ERC721URIStorage {
             payable(msg.sender),
             price,
             true,
-            true
+            true,
+            false
         );
 
         _transfer(msg.sender, address(this), tokenId);
@@ -121,7 +128,8 @@ contract Snyker is ERC721URIStorage {
             msg.sender,
             price,
             true,
-            true
+            true,
+            false
         );
     }
     
@@ -134,7 +142,7 @@ contract Snyker is ERC721URIStorage {
 
 
         for(uint i=0;i<nftCount;i++){
-            if(idOfSneaker[i+1].isInSale == true){
+            if(idOfSneaker[i+1].isInSale == true && idOfSneaker[i+1].isDeleted == false){
                 currentId = i + 1;
                 Sneaker storage currentItem = idOfSneaker[currentId];
                 tokens[currentIndex] = currentItem;
@@ -154,7 +162,7 @@ contract Snyker is ERC721URIStorage {
 
         for(uint i=0; i < totalItemCount; i++)
         {
-            if(idOfSneaker[i+1].owner == msg.sender && idOfSneaker[i+1].isInSale == false){
+            if(idOfSneaker[i+1].owner == msg.sender && idOfSneaker[i+1].isInSale == false && idOfSneaker[i+1].isDeleted == false){
                 itemCount += 1;
             }
         }
@@ -162,7 +170,7 @@ contract Snyker is ERC721URIStorage {
 
         Sneaker[] memory items = new Sneaker[](itemCount);
         for(uint i=0; i < totalItemCount; i++) {
-            if(idOfSneaker[i+1].owner == msg.sender && idOfSneaker[i+1].isInSale == false) {
+            if(idOfSneaker[i+1].owner == msg.sender && idOfSneaker[i+1].isInSale == false && idOfSneaker[i+1].isDeleted == false) {
                 currentId = i+1;
                 Sneaker storage currentItem = idOfSneaker[currentId];
                 items[currentIndex] = currentItem;
@@ -187,7 +195,7 @@ contract Snyker is ERC721URIStorage {
         idOfSneaker[tokenId].isInSale = false;
         idOfSneaker[tokenId].firstSale = false;
 
-        emit releaseExecuted(msg.sender, tokenId, false, false);
+        emit releaseExecuted(msg.sender, tokenId, false, false, false);
 
     }
     
@@ -203,7 +211,7 @@ contract Snyker is ERC721URIStorage {
 
         payable(admin).transfer(priceMarket);
 
-        emit sneakerSelled(price, tokenId, true, false);
+        emit sneakerSelled(price, tokenId, true, false, false);
         
         return string("Sneaker in sell");
 
@@ -226,7 +234,7 @@ contract Snyker is ERC721URIStorage {
         idOfSneaker[tokenId].owner = payable(msg.sender);
         idOfSneaker[tokenId].isInSale = false;
 
-        emit saleExecuted(msg.sender, price, tokenId, false, false);
+        emit saleExecuted(msg.sender, price, tokenId, false, false, false);
 
     }
 
@@ -239,8 +247,9 @@ contract Snyker is ERC721URIStorage {
 
     function deleteSneakers(uint tokenId) public {
         require(msg.sender == admin, "You're not the admin");
+        idOfSneaker[tokenId].isDeleted = true;
         _burn(tokenId);
-    
+
     }
 
 }

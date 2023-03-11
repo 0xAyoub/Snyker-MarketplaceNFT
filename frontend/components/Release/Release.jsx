@@ -54,7 +54,9 @@ export const Release = () => {
             for(var i = 0; i < transaction.length; i++){
                 if(transaction[i].tokenId.toString() != 0){
                     if(transaction[i].firstSale){
-                        transactionInSale.push(transaction[i])
+                        if(!transaction[i].isDeleted){
+                            transactionInSale.push(transaction[i])
+                        }
                     }
                 }
             }
@@ -100,7 +102,7 @@ export const Release = () => {
 
     return (
         <>
-        {console.log(data)}
+        {console.log(data.length)}
         {
 
                 data.length != 0 ? (
