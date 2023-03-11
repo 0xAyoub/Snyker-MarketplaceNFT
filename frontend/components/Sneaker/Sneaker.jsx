@@ -82,7 +82,7 @@ export const Sneaker = (data) => {
             // price = price.toString()
             // let tx = await contract.executeSale(data.data.tokenId, {value: price})
             // await tx.wait()
-
+            
             let price = data.data.price
             let priceInWei = ethers.utils.parseEther(price)
             priceInWei = priceInWei.toString()
