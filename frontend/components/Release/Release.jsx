@@ -32,7 +32,7 @@ export const Release = () => {
         },
     ];
 
-    const [data, updateData] = useState(dataDefault);
+    const [data, updateData] = useState([]);
     const [dataFetched, updateFetched] = useState(false);
     const contractAddress = process.env.NEXT_PUBLIC_SCADDRESS
     const lastBlock = process.env.NEXT_PUBLIC_BLOCK
@@ -126,7 +126,6 @@ export const Release = () => {
             </Flex>
         ) : (
                 <Flex display="block" marginLeft="30px" marginRight="30px" marginBottom="35vh" marginTop="35vh">
-                    {console.log("Salut")}
     
                     <Flex flexDirection="column" alignItems="center">
                         <Heading marginLeft="15px">Release</Heading>
