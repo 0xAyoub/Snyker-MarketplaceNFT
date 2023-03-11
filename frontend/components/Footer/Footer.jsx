@@ -25,12 +25,37 @@ export const Footer = () => {
     }
 
 
+    const [admin, getAdmin] = useState()
+    const setAdmin = async() => {
+        const ethers = require("ethers");
+
+        const provider = new ethers.providers.Web3Provider(window.ethereum)
+        const signer = provider.getSigner();
+
+
+        let contract = new ethers.Contract(contractAddress, Contract.abi, provider)
+
+        let tx = await contract.admin()
+
+        getAdmin(tx)
+
+    }
+    setAdmin()
+
     return(
         <Flex display="flex" as="footer" padding="20px" margin="0" width="100%" paddingRight="60px" paddingLeft="60px" justifyContent="space-between" bg="black" color="white">
 
             <Text marginTop="13px" marginBottom="13px" fontSize="13px">Copyright 2023 - Ayoub Benouda</Text>
 
-            <a href="/"> <Button colorScheme="red" onClick={withdrawAll} >Admin Withdraw</Button> </a>
+            {
+            
+            useAccount().address == admin ? (
+                <a href="/"> <Button colorScheme="red" onClick={withdrawAll} >Admin Withdraw</Button> </a>
+            ) : (
+                <></>
+            )
+            
+            }
      
          </Flex>
     )
