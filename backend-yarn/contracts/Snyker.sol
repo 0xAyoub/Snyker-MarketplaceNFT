@@ -12,7 +12,7 @@ contract Snyker is ERC721URIStorage {
     Counters.Counter private _tokenIds;
     Counters.Counter private _itemsSold;
 
-    address payable admin;
+    address payable public admin;
 
     uint256 priceMarket = 0.01 ether;
 

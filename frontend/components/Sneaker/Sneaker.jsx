@@ -51,6 +51,23 @@ export const Sneaker = (data) => {
 
     }
 
+    const [admin, getAdmin] = useState()
+    const setAdmin = async() => {
+        const ethers = require("ethers");
+
+        const provider = new ethers.providers.Web3Provider(window.ethereum)
+        const signer = provider.getSigner();
+
+
+        let contract = new ethers.Contract(contractAddress, Contract.abi, provider)
+
+        let tx = await contract.admin()
+
+        getAdmin(tx)
+
+    }
+    setAdmin()
+
     const deleteSneakers = async() => {
         try {
             const ethers = require("ethers");
@@ -61,6 +78,14 @@ export const Sneaker = (data) => {
 
             let tx = await contract.deleteSneakers(data.data.tokenId)
             await tx.wait()
+
+            toast({
+                title: 'Suppression réussi',
+                description: "Vous avez supprimé la paire de sneakers n°" + data.data.tokenId,
+                status: 'success',
+                duration: 9000,
+                isClosable: true,
+            })
             
         } catch(e) {
             console.log(e.message)
@@ -82,7 +107,7 @@ export const Sneaker = (data) => {
             // price = price.toString()
             // let tx = await contract.executeSale(data.data.tokenId, {value: price})
             // await tx.wait()
-            
+
             let price = data.data.price
             let priceInWei = ethers.utils.parseEther(price)
             priceInWei = priceInWei.toString()
@@ -159,7 +184,18 @@ export const Sneaker = (data) => {
                         }}>
                             Acheter
                         </Button>
-                        <Button colorScheme="red" marginTop="10px" marginLeft="10px" onClick={() => deleteSneakers()}>Delete</Button>
+
+                        {
+
+                            useAccount().address == admin ? (
+
+                                <Button colorScheme="red" marginTop="10px" marginLeft="10px" onClick={() => deleteSneakers()}>Delete</Button>
+                            ) : (
+                                <></>
+                            )
+
+                        }
+
                     </Box>
 
                 </Box>
