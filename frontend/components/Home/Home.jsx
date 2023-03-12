@@ -6,7 +6,8 @@ export const HomePage = () => {
 
     return (
         <>
-        {
+        
+
                 <Box marginTop="15%" marginBottom="15%">
                     <Center display="block">
                         <Text  textAlign="center" fontSize="50px" fontWeight="700" >The 1st marketplace without theft, and scams.</Text>
@@ -20,8 +21,12 @@ export const HomePage = () => {
                         </Button></a>
                     </Flex>
                 </Box>
+                <Box>
 
-        }
+                    <Text>Ayoub</Text>
+
+                </Box>
+        
         </>
     )
 }

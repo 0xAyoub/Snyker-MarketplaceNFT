@@ -79,8 +79,10 @@ export const Sell = () => {
             price = price.toString()
         
             
-            let priceMarket = ethers.utils.parseEther(formParams.priceMarket);
-            priceMarket = priceMarket.toString()
+            // let priceMarket = ethers.utils.parseEther(formParams.priceMarket);
+            // priceMarket = priceMarket.toString()
+            const priceMarket = ethers.utils.parseUnits("100000000000000", 2);
+
 
             console.log(priceMarket)
             console.log(metadataURL)
@@ -146,8 +148,8 @@ export const Sell = () => {
                         <Text fontWeight="400" fontSize="20px" marginTop="20px">Prix (ETH)</Text>
                         <Input display="block"  onChange={e => updateFormParams({...formParams, price: e.target.value})} value={formParams.price} placeholder="200" marginTop="10px" width="100%"/>
 
-                        <Text fontWeight="400" fontSize="20px" marginTop="20px">Frais de commission (0.01 ETH)</Text>
-                        <Input display="block" onChange={e => updateFormParams({...formParams, priceMarket: e.target.value})} value={formParams.priceMarket} placeholder="0.01" marginTop="10px" width="100%"/>
+                        {/* <Text fontWeight="400" fontSize="20px" marginTop="20px">Frais de commission (0.01 ETH)</Text>
+                        <Input display="block" onChange={e => updateFormParams({...formParams, priceMarket: e.target.value})} value={formParams.priceMarket} placeholder="0.01" marginTop="10px" width="100%"/> */}
 
 
                         <Button onClick={sellNFT} fontWeight="400" marginTop="20px" colorScheme="blue">Vendre</Button>
