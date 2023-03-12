@@ -139,7 +139,8 @@ export const Sneaker = (data) => {
 
         <>
                         {console.log(data.data)}
-            
+            {data.data ? (
+
                 <Box justifyContent="space-between" borderWidth="2px" borderRadius="50px" marginTop="30px"  height="93%" padding="30px" width="20vw">
                                         
                     <Center display="block" marginBottom="20px">
@@ -201,6 +202,9 @@ export const Sneaker = (data) => {
                 </Box>
        
                 
+            ) : (
+                <Text></Text>
+            )}
 
                 </>
 
