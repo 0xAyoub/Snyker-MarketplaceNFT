@@ -208,15 +208,15 @@ export const Sneaker = (data) => {
                                         
                 <Center display="block" marginBottom="20px">
                     {/* <Text fontWeight="600" fontSize="20px">{data.data.tokenId}</Text> */}
-                    <Text fontWeight="700" fontSize="20px">AirJordan Offwhite x TravisScott</Text>
+                    <Text fontWeight="700" fontSize="20px">Paire de sneakers par défaut ⚠️</Text>
                     <Image src="https://cdn.shopify.com/s/files/1/2358/2817/products/air-jordan-1-retro-high-travis-scott-cactus-jack-218526_1200x.png?v=1638813024" htmlHeight='200px' htmlWidth="200px"></Image>
-                    <Text marginTop="20px" fontWeight="500" fontSize="17px">Description :</Text><Text fontWeight="400" fontSize="14px">Paire de sneakers</Text>
+                    <Text marginTop="20px" fontWeight="500" fontSize="17px">Description :</Text><Text fontWeight="400" fontSize="14px">Les données n'ont pas encore transitées, veuillez réessayer plus tard.</Text>
 
                 </Center>
 
 
                 <Box marginTop="10px">
-                    <Text fontWeight="500" fontSize="15px" >Prix : 10 ETH</Text>
+                    <Text fontWeight="500" fontSize="15px" >Prix : 0 ETH</Text>
 
                     <Button colorScheme="blue" marginTop="10px">
                         Acheter
