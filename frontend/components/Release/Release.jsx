@@ -37,7 +37,6 @@ export const Release = () => {
     const contractAddress = process.env.NEXT_PUBLIC_SCADDRESS
     const lastBlock = process.env.NEXT_PUBLIC_BLOCK
 
-
     async function getAllNFTs() {
         const ethers = require("ethers");
 
@@ -122,6 +121,7 @@ export const Release = () => {
         
                         </Grid>
                         </Flex>
+                        
 
         ) : (
                 <Flex display="block" marginLeft="30px" marginRight="30px" marginBottom="35vh" marginTop="35vh">

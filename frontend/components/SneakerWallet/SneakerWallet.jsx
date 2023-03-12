@@ -9,6 +9,9 @@ export const SneakerWallet = (data) => {
     const [price, setPrice] = useState('');
     const toast = useToast()
 
+
+
+
     const sellSneaker = async() => {
         try {
          
@@ -71,7 +74,6 @@ export const SneakerWallet = (data) => {
                         <Input marginTop="10px" placeholder={data.data.price*1.5 + " ETH"}  onChange={(e) => setPrice(e.target.value)} />
                         <Button colorScheme="blue" marginTop="10px" width="100%" onClick={sellSneaker}>Vendre</Button>
                     </Box>
-
 
 
                 </Box>

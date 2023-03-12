@@ -81,7 +81,7 @@ export const Sneaker = (data) => {
 
             toast({
                 title: 'Suppression réussi',
-                description: "Vous avez supprimé la paire de sneakers n°" + data.data.tokenId,
+                description: "Vous avez supprimé la paire de sneakers " + data.data.name,
                 status: 'success',
                 duration: 9000,
                 isClosable: true,
